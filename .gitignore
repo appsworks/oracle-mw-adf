@@ -21,3 +21,27 @@ $RECYCLE.BIN/
 # =========================
 # Operating System Files
 # =========================
+
+# ADF
+#OS Cruft
+.DS_Store
+Thumbs.db
+
+# Compiled class file
+*.class
+
+# Log files
+*.log
+
+# Archives
+*.jar
+*.war
+*.ear
+
+# Misc
+*.sso
+
+# Unwanted directories
+classes/
+deploy/
+lib/
