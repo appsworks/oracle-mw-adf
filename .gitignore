@@ -45,3 +45,4 @@ Thumbs.db
 classes/
 deploy/
 lib/
+WEB-INF/temp
