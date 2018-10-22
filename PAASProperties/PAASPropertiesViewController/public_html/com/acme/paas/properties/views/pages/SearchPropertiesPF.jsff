@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/templates/threeColumnTemplate.jspx" id="pt1">
+    <f:facet name="center">
+      <af:panelStretchLayout id="psl1" startWidth="0px" endWidth="0px"
+                             topHeight="auto" bottomHeight="0px"
+                             dimensionsFrom="auto">
+        <f:facet name="bottom"/>
+        <f:facet name="center">
+          <af:decorativeBox id="db1" dimensionsFrom="auto">
+            <f:facet name="center">
+              <af:panelGroupLayout layout="vertical" id="pgl1"
+                                   styleClass="AFStretchWidth">
+                <af:panelHeader text="XxcusPersonPropertiesVO1" id="ph1">
+                  <af:query id="qryId1" headerText="Enter Search Criteria" disclosed="true"
+                            value="#{bindings.SearchPersonPropertiesVCQuery.queryDescriptor}"
+                            model="#{bindings.SearchPersonPropertiesVCQuery.queryModel}"
+                            queryListener="#{bindings.SearchPersonPropertiesVCQuery.processQuery}"
+                            queryOperationListener="#{bindings.SearchPersonPropertiesVCQuery.processQueryOperation}"
+                            resultComponentId="::pc1:resId1"
+                            saveQueryMode="hidden"/>
+                </af:panelHeader>
+            <af:spacer width="10" height="10" id="s1"/>
+            <af:panelCollection id="pc1" styleClass="AFStretchWidth"
+                                featuresOff="detach detachMenuItem">                
+                <af:table value="#{bindings.XxcusPersonPropertiesVO1.collectionModel}"
+                          var="row"
+                          rows="#{bindings.XxcusPersonPropertiesVO1.rangeSize}"
+                          emptyText="#{bindings.XxcusPersonPropertiesVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.XxcusPersonPropertiesVO1.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.SearchPersonPropertiesVCQuery.queryDescriptor}"
+                          queryListener="#{bindings.SearchPersonPropertiesVCQuery.processQuery}" varStatus="vs"
+                          selectedRowKeys="#{bindings.XxcusPersonPropertiesVO1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.XxcusPersonPropertiesVO1.collectionModel.makeCurrent}"
+                          rowSelection="single" id="resId1" autoHeightRows="25"
+                          binding="#{backingBeanScope.SearchPropertiesMB.searchPropertiesResults}">
+                  <af:column sortProperty="#{bindings.XxcusPersonPropertiesVO1.hints.FullName.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.XxcusPersonPropertiesVO1.hints.FullName.label}"
+                             id="resId1c1">
+                 <af:commandLink text="#{row.FullName}" id="cl1"
+                                  actionListener="#{backingBeanScope.SearchPropertiesMB.editProperty}"
+                                  action="launchPersonPropertyDef"/>                             
+                  </af:column>
+                  <af:column sortProperty="#{bindings.XxcusPersonPropertiesVO1.hints.PropertyTypeMeaning.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.XxcusPersonPropertiesVO1.hints.PropertyTypeMeaning.label}"
+                             id="resId1c2">
+                    <af:outputText value="#{row.PropertyTypeMeaning}" id="ot7"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.XxcusPersonPropertiesVO1.hints.PropertyValue.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.XxcusPersonPropertiesVO1.hints.PropertyValue.label}"
+                             id="resId1c4">
+                    <af:outputText value="#{row.PropertyValue}" id="ot6"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.XxcusPersonPropertiesVO1.hints.StatusMeaning.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.XxcusPersonPropertiesVO1.hints.StatusMeaning.label}"
+                             id="resId1c5">
+                    <af:outputText value="#{row.StatusMeaning}" id="ot1"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.XxcusPersonPropertiesVO1.hints.StartDateActive.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.XxcusPersonPropertiesVO1.hints.StartDateActive.label}"
+                             id="resId1c6">
+                    <f:facet name="filter">
+                      <af:inputDate value="#{vs.filterCriteria.StartDateActive}"
+                                    id="id1"/>
+                    </f:facet>
+                    <af:outputText value="#{row.StartDateActive}" id="ot5">
+                      <af:convertDateTime pattern="#{bindings.XxcusPersonPropertiesVO1.hints.StartDateActive.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.XxcusPersonPropertiesVO1.hints.EndDateActive.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.XxcusPersonPropertiesVO1.hints.EndDateActive.label}"
+                             id="resId1c7">
+                    <f:facet name="filter">
+                      <af:inputDate value="#{vs.filterCriteria.EndDateActive}"
+                                    id="id2"/>
+                    </f:facet>
+                    <af:outputText value="#{row.EndDateActive}" id="ot2">
+                      <af:convertDateTime pattern="#{bindings.XxcusPersonPropertiesVO1.hints.EndDateActive.format}"/>
+                    </af:outputText>
+                  </af:column>
+                </af:table>
+              <f:facet name="toolbar">
+                <af:toolbar id="t3">
+                  <af:commandToolbarButton text="Edit" id="ctb2"
+                                           actionListener="#{backingBeanScope.SearchPropertiesMB.editProperty}"
+                                           partialTriggers="::qryId1"/>
+                </af:toolbar>
+              </f:facet>                
+            </af:panelCollection>                
+              </af:panelGroupLayout>
+            </f:facet>
+            <f:facet name="top"/>
+          </af:decorativeBox>
+        </f:facet>
+        <!--
+        <f:facet name="start"/>
+        <f:facet name="end"/>
+        -->
+        <f:facet name="top">
+          <af:toolbar id="t1" flex="1" stretchId="stretchbar">
+            <af:spacer id="stretchbar" clientComponent="true" height="25px"/>
+            <af:commandToolbarButton text="Create New Property" id="ctb1"
+                                     icon="/images/new_ena.png"
+                                     hoverIcon="/images/new_ovr.png"
+                                     depressedIcon="/images/new_dwn.png"
+                                     disabledIcon="/images/new_dis.png"
+                                     accessKey="N"
+                                     action="launchPersonPropertyDef">
+          <af:setPropertyListener from="" to="#{pageFlowScope.selectedPropertyId}"
+                                  type="action"/>
+          <af:setPropertyListener from="CREATE" to="#{pageFlowScope.pCallMode}"
+                                  type="action"/>                                     
+          </af:commandToolbarButton>
+          </af:toolbar>
+        </f:facet>
+      </af:panelStretchLayout>
+    </f:facet>
+    <f:facet name="header"/>
+    <f:facet name="end"/>
+    <f:facet name="start"/>
+    <f:facet name="branding"/>
+    <f:facet name="copyright"/>
+    <f:facet name="status"/>
+  </af:pageTemplate>
+</jsp:root>

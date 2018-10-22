@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="XxcusPersonPropertiesEOVO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesEOVORowImpl"
+  ComponentClass="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesEOVOImpl"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <SQLQuery>
+    <![CDATA[SELECT XxcusPersonPropertiesEO.PERSON_PROPERTY_ID, 
+       XxcusPersonPropertiesEO.PERSON_ID, 
+       XxcusPersonPropertiesEO.PERSON_PROPERTY_TYPE, 
+       XxcusPersonPropertiesEO.PERSON_PROPERTY_VALUE, 
+       XxcusPersonPropertiesEO.STATUS, 
+       XxcusPersonPropertiesEO.START_DATE_ACTIVE, 
+       XxcusPersonPropertiesEO.END_DATE_ACTIVE, 
+       XxcusPersonPropertiesEO.CREATED_BY, 
+       XxcusPersonPropertiesEO.CREATION_DATE, 
+       XxcusPersonPropertiesEO.LAST_UPDATED_BY, 
+       XxcusPersonPropertiesEO.LAST_UPDATE_LOGIN, 
+       XxcusPersonPropertiesEO.LAST_UPDATE_DATE, 
+       XxcusPersonPropertiesEO.OBJECT_VERSION_NUMBER,
+       e.first_name,
+       e.last_name,
+       e.first_name||' '||e.last_name full_name,
+       lkp_ppt.meaning property_type_meaning,
+       lkp_ppt.tag person_property_value_lov,
+       lkp_ppv.meaning property_value,
+       lkp_pps.meaning status_meaning
+FROM XXCUS_PERSON_PROPERTIES XxcusPersonPropertiesEO
+,    employees e
+,    xxcus_lookup_values lkp_ppt
+,    xxcus_lookup_values lkp_ppv
+,    xxcus_lookup_values lkp_pps
+WHERE XxcusPersonPropertiesEO.person_id = e.employee_id(+)
+  AND XxcusPersonPropertiesEO.person_property_type = lkp_ppt.lookup_code(+)
+  AND lkp_ppt.lookup_type(+) = 'PERSON_PROPERTIES'
+  AND lkp_ppt.tag = lkp_ppv.lookup_type(+)
+  AND lkp_pps.lookup_type(+) = 'PERSON_PROPERTY_STATUS'
+  AND XxcusPersonPropertiesEO.status = lkp_pps.lookup_code(+)
+  AND XxcusPersonPropertiesEO.person_property_value = lkp_ppv.lookup_code(+)]]>
+  </SQLQuery>
+  <EntityUsage
+    Name="XxcusPersonPropertiesEO"
+    Entity="com.acme.paas.properties.model.adfbc.entities.XxcusPersonPropertiesEO"/>
+  <ViewAttribute
+    Name="PersonPropertyId"
+    IsUpdateable="while_insert"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PersonPropertyId"
+    EntityUsage="XxcusPersonPropertiesEO"
+    AliasName="PERSON_PROPERTY_ID"/>
+  <ViewAttribute
+    Name="PersonId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PersonId"
+    EntityUsage="XxcusPersonPropertiesEO"
+    AliasName="PERSON_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesEOVO.PersonId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PersonPropertyType"
+    PrecisionRule="true"
+    EntityAttrName="PersonPropertyType"
+    EntityUsage="XxcusPersonPropertiesEO"
+    AliasName="PERSON_PROPERTY_TYPE"/>
+  <ViewAttribute
+    Name="PersonPropertyValue"
+    PrecisionRule="true"
+    EntityAttrName="PersonPropertyValue"
+    EntityUsage="XxcusPersonPropertiesEO"
+    AliasName="PERSON_PROPERTY_VALUE"/>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    EntityAttrName="Status"
+    EntityUsage="XxcusPersonPropertiesEO"
+    AliasName="STATUS"/>
+  <ViewAttribute
+    Name="StartDateActive"
+    PrecisionRule="true"
+    EntityAttrName="StartDateActive"
+    EntityUsage="XxcusPersonPropertiesEO"
+    AliasName="START_DATE_ACTIVE">
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesEOVO.StartDateActive_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesEOVO.StartDateActive_FMT_FORMAT"/>
+        <LABEL
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesEOVO.StartDateActive_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EndDateActive"
+    PrecisionRule="true"
+    EntityAttrName="EndDateActive"
+    EntityUsage="XxcusPersonPropertiesEO"
+    AliasName="END_DATE_ACTIVE">
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesEOVO.EndDateActive_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesEOVO.EndDateActive_FMT_FORMAT"/>
+        <LABEL
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesEOVO.EndDateActive_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="XxcusPersonPropertiesEO"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="CreationDate"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="XxcusPersonPropertiesEO"
+    AliasName="CREATION_DATE"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="XxcusPersonPropertiesEO"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="LastUpdateLogin"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateLogin"
+    EntityUsage="XxcusPersonPropertiesEO"
+    AliasName="LAST_UPDATE_LOGIN"/>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateDate"
+    EntityUsage="XxcusPersonPropertiesEO"
+    AliasName="LAST_UPDATE_DATE"/>
+  <ViewAttribute
+    Name="ObjectVersionNumber"
+    PrecisionRule="true"
+    EntityAttrName="ObjectVersionNumber"
+    EntityUsage="XxcusPersonPropertiesEO"
+    AliasName="OBJECT_VERSION_NUMBER"/>
+  <ViewAttribute
+    Name="FirstName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="20"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FIRST_NAME"
+    Expression="FIRST_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LastName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LAST_NAME"
+    Expression="LAST_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FullName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="46"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FULL_NAME"
+    Expression="FULL_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="46"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesEOVO.FullName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PropertyTypeMeaning"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="80"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PROPERTY_TYPE_MEANING"
+    Expression="PROPERTY_TYPE_MEANING"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="80"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesEOVO.PropertyTypeMeaning_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PersonPropertyValueLov"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="150"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PERSON_PROPERTY_VALUE_LOV"
+    Expression="PERSON_PROPERTY_VALUE_LOV"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PropertyValue"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="80"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PROPERTY_VALUE"
+    Expression="PROPERTY_VALUE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="80"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesEOVO.PropertyValue_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StatusMeaning"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="80"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STATUS_MEANING"
+    Expression="STATUS_MEANING"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="80"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesEOVO.StatusMeaning_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.acme.paas.properties.model.PAASPropertiesModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

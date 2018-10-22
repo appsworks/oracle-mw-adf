@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="XxcusLookupValuesEOVOFKVL"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.acme.paas.common.model.adfbc.views.links.XxcusLookupValuesEOVOFKVL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="XxcusLookupTypesEOVO"
+    Cardinality="1"
+    Owner="com.acme.paas.common.model.adfbc.views.XxcusLookupTypesEOVO"
+    Source="true">
+    <DesignTime>
+      <Attr Name="_finderName" Value="XxcusLookupTypesEOVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="com.acme.paas.common.model.adfbc.views.XxcusLookupTypesEOVO.LookupType"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="XxcusLookupValuesEOVO"
+    Cardinality="-1"
+    Owner="com.acme.paas.common.model.adfbc.views.XxcusLookupValuesEOVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="XxcusLookupValuesEOVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="com.acme.paas.common.model.adfbc.views.XxcusLookupValuesEOVO.LookupType"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.acme.paas.common.model.PAASCommonModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

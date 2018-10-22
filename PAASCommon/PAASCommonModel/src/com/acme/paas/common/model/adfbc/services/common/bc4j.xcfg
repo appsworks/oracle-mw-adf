@@ -1,0 +1,25 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="com.acme.paas.common.model.adfbc.services.PAASCommonAM">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="com.acme.paas.common.model.PAASCommonModel" name="PAASCommonAMLocal" ApplicationName="com.acme.paas.common.model.adfbc.services.PAASCommonAM">
+         <Security AppModuleJndiName="com.acme.paas.common.model.adfbc.services.PAASCommonAM"/>
+         <Custom JDBCDataSource="jdbc/PaaSDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="com.acme.paas.common.model.PAASCommonModel" name="PAASCommonAMShared" ApplicationName="com.acme.paas.common.model.adfbc.services.PAASCommonAM">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Security AppModuleJndiName="com.acme.paas.common.model.adfbc.services.PAASCommonAM"/>
+         <Custom JDBCDataSource="jdbc/PaaSDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="com.acme.paas.common.model.adfbc.services.PAASCommonLOVAM">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="com.acme.paas.common.model.PAASCommonModel" name="PAASCommonLOVAMLocal" ApplicationName="com.acme.paas.common.model.adfbc.services.PAASCommonLOVAM">
+         <Security AppModuleJndiName="com.acme.paas.common.model.adfbc.services.PAASCommonLOVAM"/>
+         <Custom JDBCDataSource="jdbc/PaaSDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="com.acme.paas.common.model.PAASCommonModel" name="PAASCommonLOVAMShared" ApplicationName="com.acme.paas.common.model.adfbc.services.PAASCommonLOVAM">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Security AppModuleJndiName="com.acme.paas.common.model.adfbc.services.PAASCommonLOVAM"/>
+         <Custom JDBCDataSource="jdbc/PaaSDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

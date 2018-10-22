@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PAASPropertiesAM"
+  Version="11.1.1.66.73"
+  Extends="com.acme.paas.common.model.adfbc.services.PAASCommonAM"
+  InheritPersonalization="merge"
+  ComponentClass="com.acme.paas.properties.model.adfbc.services.PAASPropertiesAMImpl"
+  ClearCacheOnRollback="true"
+  ComponentInterface="com.acme.paas.properties.model.adfbc.services.common.PAASPropertiesAM"
+  ClientProxyName="com.acme.paas.properties.model.adfbc.services.client.PAASPropertiesAMClient">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewUsage
+    Name="XxcusPersonPropertiesEOVO1"
+    ViewObjectName="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesEOVO"/>
+  <ViewUsage
+    Name="XxcusPersonPropertiesVO1"
+    ViewObjectName="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesVO"/>
+  <ViewUsage
+    Name="XxcusLookupValuesVO1"
+    ViewObjectName="com.acme.paas.common.model.adfbc.views.XxcusLookupValuesVO">
+    <ViewCriteriaUsage
+      Name="LookupValuesByTypeVC"
+      FullName="com.acme.paas.common.model.adfbc.views.XxcusLookupValuesVO.LookupValuesByTypeVC"/>
+    <ParameterMap>
+      <PIMap Variable="pLookupType">
+        <TransientExpression><![CDATA["PERSON_PROPERTIES"]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewUsage>
+  <ViewUsage
+    Name="PersonPropertyDefPVO1"
+    ViewObjectName="com.acme.paas.properties.model.adfbc.views.PersonPropertyDefPVO"/>
+  <ClientInterface>
+    <Method
+      Name="initialiseCreate">
+      <Return
+        Type="void"/>
+    </Method>
+    <Method
+      Name="initialiseEdit">
+      <Return
+        Type="void"/>
+      <Parameter
+        Name="structList"
+        Type="java.util.ArrayList"/>
+    </Method>
+    <Method
+      Name="saveTransaction">
+      <Return
+        Type="void"/>
+      <Parameter
+        Name="clearCache"
+        Type="java.lang.Boolean"/>
+    </Method>
+    <Method
+      Name="isTransactionDirty">
+      <Return
+        Type="java.lang.Boolean"/>
+    </Method>
+  </ClientInterface>
+</AppModule>

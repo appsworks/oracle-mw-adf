@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="com.acme.paas.properties.model.adfbc.services.PAASPropertiesAM">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="com.acme.paas.properties.model.PAASPropertiesModel" name="PAASPropertiesAMLocal" ApplicationName="com.acme.paas.properties.model.adfbc.services.PAASPropertiesAM">
+         <Security AppModuleJndiName="com.acme.paas.properties.model.adfbc.services.PAASPropertiesAM"/>
+         <Custom JDBCDataSource="jdbc/PaaSDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="com.acme.paas.properties.model.PAASPropertiesModel" name="PAASPropertiesAMShared" ApplicationName="com.acme.paas.properties.model.adfbc.services.PAASPropertiesAM">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Security AppModuleJndiName="com.acme.paas.properties.model.adfbc.services.PAASPropertiesAM"/>
+         <Custom JDBCDataSource="jdbc/PaaSDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

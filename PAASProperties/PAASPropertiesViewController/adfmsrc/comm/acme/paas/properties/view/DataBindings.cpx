@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.66.73" id="DataBindings" SeparateXMLFiles="false"
+             Package="comm.acme.paas.properties.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/com/acme/paas/properties/views/pages/SearchPropertiesPF.jsff"
+          usageId="comm_acme_paas_properties_view_SearchPropertiesPFPageDef"/>
+    <page path="/com/acme/paas/properties/views/pages/test/TestSearchPropertiesPG.jspx"
+          usageId="comm_acme_paas_properties_view_TestSearchPropertiesPGPageDef"/>
+    <page path="/WEB-INF/com/acme/paas/properties/views/flows/SearchPropertiesTF.xml#SearchPropertiesTF@Execute"
+          usageId="comm_acme_paas_properties_view_SearchPropertiesTF_SearchPropertiesTF_ExecutePageDef"/>
+    <page path="/WEB-INF/com/acme/paas/properties/views/flows/PersonPropertyDefTF.xml#PersonPropertyDefTF@initialiseCreate"
+          usageId="comm_acme_paas_properties_view_PersonPropertyDefTF_PersonPropertyDefTF_initialiseCreatePageDef"/>
+    <page path="/com/acme/paas/properties/views/pages/PropertyDefPF.jsff"
+          usageId="comm_acme_paas_properties_view_PropertyDefPFjsffPageDef"/>
+    <page path="/WEB-INF/com/acme/paas/properties/views/flows/PersonPropertyDefTF.xml#PersonPropertyDefTF@initialiseEdit1"
+          usageId="comm_acme_paas_properties_view_PersonPropertyDefTF_PersonPropertyDefTF_initialiseEdit1PageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="comm_acme_paas_properties_view_SearchPropertiesPFPageDef"
+          path="com.acme.paas.properties.views.pages.SearchPropertiesPFPageDef"/>
+    <page id="comm_acme_paas_properties_view_TestSearchPropertiesPGPageDef"
+          path="com.acme.paas.properties.views.pages.test.TestSearchPropertiesPGPageDef"/>
+    <page id="comm_acme_paas_properties_view_SearchPropertiesTF_SearchPropertiesTF_ExecutePageDef"
+          path="com.acme.paas.properties.views.flows.SearchPropertiesTF_SearchPropertiesTF_ExecutePageDef"/>
+    <page id="comm_acme_paas_properties_view_PersonPropertyDefTF_PersonPropertyDefTF_initialiseCreatePageDef"
+          path="com.acme.paas.properties.views.flows.PersonPropertyDefTF_PersonPropertyDefTF_initialiseCreatePageDef"/>
+    <page id="comm_acme_paas_properties_view_PropertyDefPFjsffPageDef"
+          path="com.acme.paas.properties.views.pages.PropertyDefPFjsffPageDef"/>
+    <page id="comm_acme_paas_properties_view_PersonPropertyDefTF_PersonPropertyDefTF_initialiseEdit1PageDef"
+          path="com.acme.paas.properties.views.flows.PersonPropertyDefTF_PersonPropertyDefTF_initialiseEdit1PageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="PAASPropertiesAMDataControl"
+                     Package="com.acme.paas.properties.model.adfbc.services"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="PAASPropertiesAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

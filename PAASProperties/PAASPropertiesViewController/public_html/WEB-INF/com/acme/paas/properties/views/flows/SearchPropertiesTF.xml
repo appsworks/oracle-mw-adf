@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="SearchPropertiesTF">
+    <default-activity id="__2">SearchPropertiesPF</default-activity>
+    <transaction id="__25">
+      <requires-transaction/>
+    </transaction>
+    <no-save-point/>
+    <data-control-scope id="__26">
+      <isolated/>
+    </data-control-scope>
+    <managed-bean id="__21">
+      <managed-bean-name id="__24">SearchPropertiesMB</managed-bean-name>
+      <managed-bean-class id="__22">com.acme.paas.properties.views.mb.SearchPropertiesMB</managed-bean-class>
+      <managed-bean-scope id="__23">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="SearchPropertiesPF">
+      <page>/com/acme/paas/properties/views/pages/SearchPropertiesPF.jsff</page>
+    </view>
+    <task-flow-call id="PersonPropertyDefTF">
+      <task-flow-reference>
+        <document>/WEB-INF/com/acme/paas/properties/views/flows/PersonPropertyDefTF.xml</document>
+        <id>PersonPropertyDefTF</id>
+      </task-flow-reference>
+      <input-parameter id="__27">
+        <name>pCallMode</name>
+        <value>#{pageFlowScope.pCallMode}</value>
+      </input-parameter>
+      <input-parameter id="__17">
+        <name>pStructList</name>
+        <value>#{pageFlowScope.pStructList}</value>
+      </input-parameter>
+    </task-flow-call>
+    <method-call id="Execute">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__7">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__1">
+      <from-activity-id id="__3">SearchPropertiesPF</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome id="__6">launchPersonPropertyDef</from-outcome>
+        <to-activity-id id="__4">PersonPropertyDefTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__8">
+      <from-activity-id id="__9">PersonPropertyDefTF</from-activity-id>
+      <control-flow-case id="__10">
+        <to-activity-id id="__11">Execute</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id id="__13">Execute</from-activity-id>
+      <control-flow-case id="__15">
+        <from-outcome id="__14">Execute</from-outcome>
+        <to-activity-id id="__16">SearchPropertiesPF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

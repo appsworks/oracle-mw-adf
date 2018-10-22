@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="PropertyDefPFjsffPageDef"
+                Package="com.acme.paas.properties.views.pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="XxcusPersonPropertiesEOVO1" RangeSize="25"
+              DataControl="PAASPropertiesAMDataControl"
+              id="XxcusPersonPropertiesEOVO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="XxcusPersonPropertiesEOVO1Iterator"
+                     id="FullName">
+      <AttrNames>
+        <Item Value="FullName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxcusPersonPropertiesEOVO1Iterator"
+                     id="PersonId">
+      <AttrNames>
+        <Item Value="PersonId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxcusPersonPropertiesEOVO1Iterator"
+                     id="PropertyTypeMeaning">
+      <AttrNames>
+        <Item Value="PropertyTypeMeaning"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxcusPersonPropertiesEOVO1Iterator"
+                     id="PropertyValue">
+      <AttrNames>
+        <Item Value="PropertyValue"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxcusPersonPropertiesEOVO1Iterator"
+                     id="StatusMeaning">
+      <AttrNames>
+        <Item Value="StatusMeaning"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxcusPersonPropertiesEOVO1Iterator"
+                     id="StartDateActive">
+      <AttrNames>
+        <Item Value="StartDateActive"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxcusPersonPropertiesEOVO1Iterator"
+                     id="EndDateActive">
+      <AttrNames>
+        <Item Value="EndDateActive"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="isTransactionDirty"
+                  InstanceName="PAASPropertiesAMDataControl.dataProvider"
+                  DataControl="PAASPropertiesAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="saveTransaction" IsViewObjectMethod="false"
+                  ReturnName="data.PAASPropertiesAMDataControl.methodResults.isTransactionDirty_PAASPropertiesAMDataControl_dataProvider_isTransactionDirty_result">
+      <NamedData NDName="clearCache" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <methodAction id="saveTransaction"
+                  InstanceName="PAASPropertiesAMDataControl.dataProvider"
+                  DataControl="PAASPropertiesAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="saveTransaction" IsViewObjectMethod="false">
+      <NamedData NDName="clearCache" NDType="java.lang.Boolean"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

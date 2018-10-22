@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="PersonPropertyDefTF">
+    <default-activity id="__1">CreateOrEdit</default-activity>
+    <transaction id="__39">
+      <requires-transaction/>
+    </transaction>
+    <no-save-point/>
+    <data-control-scope id="__40">
+      <isolated/>
+    </data-control-scope>
+    <input-parameter-definition id="__41">
+      <name id="__42">pCallMode</name>
+      <value>#{pageFlowScope.pCallMode}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__44">
+      <name id="__43">pStructList</name>
+      <value>#{pageFlowScope.pStructList}</value>
+      <class>java.util.ArrayList</class>
+    </input-parameter-definition>
+    <managed-bean id="__48">
+      <managed-bean-name id="__47">PropertyDefMB</managed-bean-name>
+      <managed-bean-class id="__45">com.acme.paas.properties.views.mb.PropertyDefMB</managed-bean-class>
+      <managed-bean-scope id="__46">backingBean</managed-bean-scope>
+    </managed-bean>
+    <router id="CreateOrEdit">
+      <case>
+        <expression>#{pageFlowScope.pCallMode eq 'CREATE'}</expression>
+        <outcome id="__2">create</outcome>
+      </case>
+      <case>
+        <expression>#{pageFlowScope.pCallMode eq 'EDIT'}</expression>
+        <outcome id="__3">edit</outcome>
+      </case>
+      <default-outcome>create</default-outcome>
+    </router>
+    <method-call id="initialiseCreate">
+      <method>#{bindings.initialiseCreate.execute}</method>
+      <outcome id="__4">
+        <fixed-outcome>initialiseCreate</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="PropertyDefPF">
+      <page>/com/acme/paas/properties/views/pages/PropertyDefPF.jsff</page>
+    </view>
+    <task-flow-return id="completeReturn">
+      <outcome id="__25">
+        <name>completeReturn</name>
+        <commit/>
+      </outcome>
+    </task-flow-return>
+    <task-flow-return id="cancelReturn">
+      <outcome id="__26">
+        <name>cancelReturn</name>
+        <rollback/>
+      </outcome>
+    </task-flow-return>
+    <method-call id="initialiseEdit1">
+      <method>#{bindings.initialiseEdit.execute}</method>
+      <outcome id="__24">
+        <fixed-outcome>initialiseEdit</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__6">
+      <from-activity-id id="__7">CreateOrEdit</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome id="__8">create</from-outcome>
+        <to-activity-id id="__10">initialiseCreate</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__37">
+        <from-outcome id="__36">edit</from-outcome>
+        <to-activity-id id="__35">initialiseEdit1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__14">
+      <from-activity-id id="__15">initialiseCreate</from-activity-id>
+      <control-flow-case id="__16">
+        <from-outcome id="__18">initialiseCreate</from-outcome>
+        <to-activity-id id="__17">PropertyDefPF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__27">
+      <from-activity-id id="__28">PropertyDefPF</from-activity-id>
+      <control-flow-case id="__30">
+        <from-outcome id="__31">complete</from-outcome>
+        <to-activity-id id="__29">completeReturn</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__33">
+        <from-outcome id="__34">cancel</from-outcome>
+        <to-activity-id id="__32">cancelReturn</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__38">
+      <from-activity-id id="__49">initialiseEdit1</from-activity-id>
+      <control-flow-case id="__51">
+        <from-outcome id="__50">initialiseEdit</from-outcome>
+        <to-activity-id id="__52">PropertyDefPF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

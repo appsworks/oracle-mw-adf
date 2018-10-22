@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="XxcusPersonPropertiesVO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesVORowImpl"
+  ComponentClass="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesVOImpl"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Variable
+    Name="pEffectiveDate"
+    Kind="viewcriteria"
+    Type="oracle.jbo.domain.Date">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesVO.pEffectiveDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="pFullName"
+    Kind="viewcriteria"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesVO.pFullName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="pPersonNumber"
+    Kind="viewcriteria"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesVO.pPersonNumber_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="pPropertyStatus"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="pPropertyTypeMeaning"
+    Kind="viewcriteria"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesVO.pPropertyTypeMeaning_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="pPreopertyValueMeaning"
+    Kind="viewcriteria"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesVO.pPreopertyValueMeaning_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="pPropertyValue"
+    Kind="viewcriteria"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesVO.pPropertyValue_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <ViewAccessor
+    Name="EmployeesVO1"
+    ViewObjectName="com.acme.paas.properties.model.adfbc.views.lov.EmployeesLOVVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="EmployeesLOVVO1"
+    ViewObjectName="com.acme.paas.common.model.adfbc.views.lov.EmployeesLOVVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="EmployeesLOVVO2"
+    ViewObjectName="com.acme.paas.properties.model.adfbc.views.lov.EmployeesLOVVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="XxcusLookupValuesVO1"
+    ViewObjectName="com.acme.paas.common.model.adfbc.views.XxcusLookupValuesVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_FullName"
+    ListVOName="EmployeesLOVVO2"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_FullName_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="FullName"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="PersonId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="FullName"/>
+      <Item Value="PersonId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="FirstName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PropertyTypeMeaning"
+    ListVOName="XxcusLookupValuesVO1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_PropertyTypeMeaning_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PropertyTypeMeaning"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="PersonPropertyType"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Meaning"/>
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupCode"/>
+      <Item Value="Meaning"/>
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT XxcusPersonProperties.PERSON_PROPERTY_ID,
+       XxcusPersonProperties.PERSON_ID,
+       XxcusPersonProperties.PERSON_PROPERTY_TYPE,
+       XxcusPersonProperties.PERSON_PROPERTY_VALUE,
+       XxcusPersonProperties.STATUS,
+       XxcusPersonProperties.START_DATE_ACTIVE,
+       XxcusPersonProperties.END_DATE_ACTIVE,
+       XxcusPersonProperties.CREATED_BY,
+       XxcusPersonProperties.CREATION_DATE,
+       XxcusPersonProperties.LAST_UPDATED_BY,
+       XxcusPersonProperties.LAST_UPDATE_LOGIN,
+       XxcusPersonProperties.LAST_UPDATE_DATE,
+       XxcusPersonProperties.OBJECT_VERSION_NUMBER,
+       e.first_name,
+       e.last_name,
+       e.first_name||' '||e.last_name full_name,
+       lkp_ppt.meaning property_type_meaning,
+       lkp_ppt.tag person_property_value_lov,
+       lkp_ppv.meaning property_value,
+       lkp_pps.meaning status_meaning
+FROM XXCUS_PERSON_PROPERTIES XxcusPersonProperties
+,    employees e
+,    xxcus_lookup_values lkp_ppt
+,    xxcus_lookup_values lkp_ppv
+,    xxcus_lookup_values lkp_pps
+WHERE XxcusPersonProperties.person_id = e.employee_id
+  AND XxcusPersonProperties.person_property_type = lkp_ppt.lookup_code
+  AND lkp_ppt.lookup_type = 'PERSON_PROPERTIES'
+  AND lkp_ppt.tag = lkp_ppv.lookup_type
+  AND lkp_pps.lookup_type = 'PERSON_PROPERTY_STATUS'
+  AND XxcusPersonProperties.status = lkp_pps.lookup_code
+  AND XxcusPersonProperties.person_property_value = lkp_ppv.lookup_code]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="PersonPropertyId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="PERSON_PROPERTY_ID"
+    Expression="PERSON_PROPERTY_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PersonId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="PERSON_ID"
+    Expression="PERSON_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesVO.PersonId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PersonPropertyType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PERSON_PROPERTY_TYPE"
+    Expression="PERSON_PROPERTY_TYPE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PersonPropertyValue"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PERSON_PROPERTY_VALUE"
+    Expression="PERSON_PROPERTY_VALUE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Status"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STATUS"
+    Expression="STATUS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StartDateActive"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="START_DATE_ACTIVE"
+    Expression="START_DATE_ACTIVE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesVO.StartDateActive_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesVO.StartDateActive_FMT_FORMAT"/>
+        <LABEL
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesVO.StartDateActive_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EndDateActive"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="END_DATE_ACTIVE"
+    Expression="END_DATE_ACTIVE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesVO.EndDateActive_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesVO.EndDateActive_FMT_FORMAT"/>
+        <LABEL
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesVO.EndDateActive_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreatedBy"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="CREATED_BY"
+    Expression="CREATED_BY"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreationDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="CREATION_DATE"
+    Expression="CREATION_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="LAST_UPDATED_BY"
+    Expression="LAST_UPDATED_BY"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LastUpdateLogin"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="LAST_UPDATE_LOGIN"
+    Expression="LAST_UPDATE_LOGIN"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="LAST_UPDATE_DATE"
+    Expression="LAST_UPDATE_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ObjectVersionNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="OBJECT_VERSION_NUMBER"
+    Expression="OBJECT_VERSION_NUMBER"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FirstName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="20"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FIRST_NAME"
+    Expression="FIRST_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LastName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LAST_NAME"
+    Expression="LAST_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FullName"
+    IsUpdateable="false"
+    LOVName="LOV_FullName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="46"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FULL_NAME"
+    Expression="FULL_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="46"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesVO.FullName_LABEL"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PropertyTypeMeaning"
+    IsUpdateable="false"
+    LOVName="LOV_PropertyTypeMeaning"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="80"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PROPERTY_TYPE_MEANING"
+    Expression="PROPERTY_TYPE_MEANING"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="80"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesVO.PropertyTypeMeaning_LABEL"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PersonPropertyValueLov"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="150"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PERSON_PROPERTY_VALUE_LOV"
+    Expression="PERSON_PROPERTY_VALUE_LOV"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PropertyValue"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="80"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PROPERTY_VALUE"
+    Expression="PROPERTY_VALUE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="80"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesVO.PropertyValue_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StatusMeaning"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="80"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STATUS_MEANING"
+    Expression="STATUS_MEANING"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="80"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesVO.StatusMeaning_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="SearchPersonPropertiesVC"
+    ViewObjectName="com.acme.paas.properties.model.adfbc.views.XxcusPersonPropertiesVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow45"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="PersonId"
+        ViewAttribute="PersonId"
+        Operator="="
+        Conjunction="AND"
+        Value=":pPersonNumber"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Status"
+        ViewAttribute="Status"
+        Operator="="
+        Conjunction="AND"
+        Value=":pPropertyStatus"
+        UpperColumns="0"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="StartDateActive"
+        ViewAttribute="StartDateActive"
+        Operator="ONORBEFORE"
+        Conjunction="AND"
+        Value=":pEffectiveDate"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="EndDateActive"
+        ViewAttribute="EndDateActive"
+        Operator="ONORAFTER"
+        Conjunction="AND"
+        Value=":pEffectiveDate"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="FullName"
+        ViewAttribute="FullName"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Value=":pFullName"
+        UpperColumns="1"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="PropertyTypeMeaning"
+        ViewAttribute="PropertyTypeMeaning"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Value=":pPropertyTypeMeaning"
+        UpperColumns="1"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="PropertyValue"
+        ViewAttribute="PropertyValue"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Value=":pPropertyValue"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="PersonPropertyId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.acme.paas.properties.model.PAASPropertiesModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

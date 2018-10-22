@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/templates/threeColumnTemplate.jspx" id="pt1">
+    <f:facet name="center">
+      <af:panelStretchLayout id="psl1">
+        <f:facet name="bottom"/>
+        <f:facet name="center">
+          <af:panelFormLayout id="pfl1">
+            <af:inputText value="#{bindings.FullName.inputValue}"
+                          label="#{bindings.FullName.hints.label}"
+                          required="#{bindings.FullName.hints.mandatory}"
+                          columns="#{bindings.FullName.hints.displayWidth}"
+                          maximumLength="#{bindings.FullName.hints.precision}"
+                          shortDesc="#{bindings.FullName.hints.tooltip}"
+                          id="it1"
+                          readOnly='#{pageFlowScope.pCallMode eq &apos;EDIT&apos;}'>
+              <f:validator binding="#{bindings.FullName.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.PersonId.inputValue}"
+                          label="#{bindings.PersonId.hints.label}"
+                          required="#{bindings.PersonId.hints.mandatory}"
+                          columns="#{bindings.PersonId.hints.displayWidth}"
+                          maximumLength="#{bindings.PersonId.hints.precision}"
+                          shortDesc="#{bindings.PersonId.hints.tooltip}"
+                          id="it2"
+                          readOnly="#{pageFlowScope.pCallMode eq 'EDIT'}">
+              <f:validator binding="#{bindings.PersonId.validator}"/>
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.PersonId.format}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.PropertyTypeMeaning.inputValue}"
+                          label="#{bindings.PropertyTypeMeaning.hints.label}"
+                          required="#{bindings.PropertyTypeMeaning.hints.mandatory}"
+                          columns="#{bindings.PropertyTypeMeaning.hints.displayWidth}"
+                          maximumLength="#{bindings.PropertyTypeMeaning.hints.precision}"
+                          shortDesc="#{bindings.PropertyTypeMeaning.hints.tooltip}"
+                          id="it4"
+                          readOnly="#{pageFlowScope.pCallMode eq 'EDIT'}">
+              <f:validator binding="#{bindings.PropertyTypeMeaning.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.PropertyValue.inputValue}"
+                          label="#{bindings.PropertyValue.hints.label}"
+                          required="#{bindings.PropertyValue.hints.mandatory}"
+                          columns="#{bindings.PropertyValue.hints.displayWidth}"
+                          maximumLength="#{bindings.PropertyValue.hints.precision}"
+                          shortDesc="#{bindings.PropertyValue.hints.tooltip}"
+                          id="it5">
+              <f:validator binding="#{bindings.PropertyValue.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.StatusMeaning.inputValue}"
+                          label="#{bindings.StatusMeaning.hints.label}"
+                          required="#{bindings.StatusMeaning.hints.mandatory}"
+                          columns="#{bindings.StatusMeaning.hints.displayWidth}"
+                          maximumLength="#{bindings.StatusMeaning.hints.precision}"
+                          shortDesc="#{bindings.StatusMeaning.hints.tooltip}"
+                          id="it3">
+              <f:validator binding="#{bindings.StatusMeaning.validator}"/>
+            </af:inputText>
+            <af:inputDate value="#{bindings.StartDateActive.inputValue}"
+                          label="#{bindings.StartDateActive.hints.label}"
+                          required="#{bindings.StartDateActive.hints.mandatory}"
+                          shortDesc="#{bindings.StartDateActive.hints.tooltip}"
+                          id="id2"
+                          readOnly="#{pageFlowScope.pCallMode eq 'EDIT'}">
+              <f:validator binding="#{bindings.StartDateActive.validator}"/>
+              <af:convertDateTime pattern="#{bindings.StartDateActive.format}"/>
+            </af:inputDate>
+            <af:inputDate value="#{bindings.EndDateActive.inputValue}"
+                          label="#{bindings.EndDateActive.hints.label}"
+                          required="#{bindings.EndDateActive.hints.mandatory}"
+                          shortDesc="#{bindings.EndDateActive.hints.tooltip}"
+                          id="id1">
+              <f:validator binding="#{bindings.EndDateActive.validator}"/>
+              <af:convertDateTime pattern="#{bindings.EndDateActive.format}"/>
+            </af:inputDate>
+          </af:panelFormLayout>
+        </f:facet>
+        <!--
+        <f:facet name="start"/>
+        <f:facet name="end"/>
+        -->
+        <f:facet name="top">
+           <af:toolbar id="t1" flex="1" stretchId="sttb">
+              <af:spacer id="sttb" clientComponent="true"/>
+              <af:commandToolbarButton text="Cancel" id="ctb1" accessKey="N"
+                                       hoverIcon="/images/act_undo_ovr.png"
+                                       depressedIcon="/images/act_undo_dwn.png"
+                                       disabledIcon="/images/act_undo_dis.png"
+                                       actionListener="#{backingBeanScope.PropertyDefMB.cancelEdit}"
+                                       action="cancel"/>
+              <af:menuBar id="mb1">
+                <af:menu text="Save" id="m1"
+                         accessKey="V">
+                  <af:commandMenuItem text="Save and Continue" id="cmi1"
+                                      actionListener="#{backingBeanScope.PropertyDefMB.saveAndContinue}"/>
+                  <af:commandMenuItem text="Save and Exit" id="cmi2"
+                                      actionListener="#{backingBeanScope.PropertyDefMB.saveAndExit}"/>
+                </af:menu>
+              </af:menuBar>
+            </af:toolbar>
+         </f:facet>   
+      </af:panelStretchLayout>
+    </f:facet>
+    <f:facet name="header"/>
+    <f:facet name="end"/>
+    <f:facet name="start"/>
+    <f:facet name="branding"/>
+    <f:facet name="copyright"/>
+    <f:facet name="status"/>
+  </af:pageTemplate>
+</jsp:root>
